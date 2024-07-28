@@ -16,6 +16,7 @@ const cors = require("cors");
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+//real
 app.use(express.json());
 //app.use(express.urlencoded({ extended: true }));
 app.use(cookieparser());
