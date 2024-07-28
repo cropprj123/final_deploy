@@ -4,7 +4,7 @@
   "description": "new project->4/3/2024",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "concurrently \"nodemon server.js\" \"python fly.py\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -45,5 +45,8 @@
     "stripe": "^14.25.0",
     "validator": "^13.11.0",
     "xss-clean": "^0.1.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
