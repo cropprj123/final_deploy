@@ -50,7 +50,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   // Remove password from output
   newUser.password = undefined;
-  const url = `${req.protocol}://localhost:5173/profile`;
+  const url = `https://cropify-swart.vercel.app/profile`;
   // console.log(url);
   await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, res);
@@ -196,7 +196,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   try {
     // 3) Send it to user's email
-    const resetURL = `${req.protocol}://localhost:5173/resetPassword/${resetToken}`;
+    const resetURL = `https://cropify-swart.vercel.app/resetPassword/${resetToken}`;
     await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({

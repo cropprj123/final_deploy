@@ -38,7 +38,7 @@ const CreateProduct = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5173/api/v1/users/user"
+          "https://cropify-swart.vercel.app/api/v1/users/user"
         );
         setUserData(response.data.user);
       } catch (error) {
@@ -49,7 +49,9 @@ const CreateProduct = () => {
 
     const fetchStore = async () => {
       try {
-        const response = await axios.get("http://localhost:5173/api/v1/store");
+        const response = await axios.get(
+          "https://cropify-swart.vercel.app/api/v1/store"
+        );
         // setUserData(response.data.user);
         // console.log("store data", response.data.data.data);
         setStores(response.data.data.data);
@@ -115,11 +117,15 @@ const CreateProduct = () => {
 
     try {
       console.log("creating prod ", data);
-      await axios.post("http://127.0.0.1:3000/api/v1/crops/", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        "https://final-deploy-d3zh.onrender.com/api/v1/crops/",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       setSuccessMessage("Product created successfully!");
     } catch (err) {

@@ -100,11 +100,14 @@ function Crops({ cart, setCart }) {
     // Send a request to your backend to store data in the database
     const storeData = async () => {
       try {
-        await axios.get(`http://localhost:5173/api/v1/bookings/booking`, {
-          params: { crop, user, price },
-        });
+        await axios.get(
+          `https://cropify-swart.vercel.app/api/v1/bookings/booking`,
+          {
+            params: { crop, user, price },
+          }
+        );
         // Redirect to the normal localhost:5173 URL
-        window.location.href = "http://localhost:5173/crops";
+        window.location.href = "https://cropify-swart.vercel.app/crops";
         //console.log("Data stored successfully");
       } catch (error) {
         console.error("Error storing data:", error);

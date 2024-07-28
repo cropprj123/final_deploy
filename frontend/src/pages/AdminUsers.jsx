@@ -14,7 +14,9 @@ export default function AdminUsers() {
 
     const fetchStoreLocations = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:3000/api/v1/store/");
+        const response = await fetch(
+          "https://final-deploy-d3zh.onrender.com/api/v1/store/"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch store locations");
         }

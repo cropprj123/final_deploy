@@ -13,7 +13,7 @@ export const crop = async (id) => {
   try {
     // 1) Get checkout session from API
     const response = await axios.get(
-      `http://localhost:5173/api/v1/bookings/checkout-session/${id}`
+      `https://cropify-swart.vercel.app/api/v1/bookings/checkout-session/${id}`
     );
     const sessionId = response.data.session.id;
 

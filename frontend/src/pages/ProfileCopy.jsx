@@ -34,7 +34,7 @@ const Profile = ({ userData }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5173/api/v1/users/user"
+          "https://cropify-swart.vercel.app/api/v1/users/user"
         );
         console.log("USEEFFECT GET DATA ,", response.data.user);
         const userDataFromApi = response.data.user;
@@ -63,7 +63,7 @@ const Profile = ({ userData }) => {
       const fetchData = async () => {
         try {
           const additionalData = await axios.get(
-            "http://localhost:5173/api/v1/users/user"
+            "https://cropify-swart.vercel.app/api/v1/users/user"
           );
           console.log("Additional data:", additionalData);
         } catch (error) {

@@ -47,7 +47,7 @@ const Cart = ({ cart, setCart }) => {
         )
         .then(() => {
           // After making the API call, remove all query parameters and redirect
-          window.location.href = "http://localhost:5173/orderplaced";
+          window.location.href = "https://cropify-swart.vercel.app/orderplaced";
         })
         .catch((error) => {
           console.error("Error:", error);

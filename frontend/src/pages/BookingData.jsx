@@ -82,7 +82,7 @@ export default function BookingData() {
   const handleDownloadExcel = async () => {
     try {
       const response = await fetch(
-        "http://127.0.0.1:3000/api/v1/bookings/report"
+        "https://final-deploy-d3zh.onrender.com/api/v1/bookings/report"
       );
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));

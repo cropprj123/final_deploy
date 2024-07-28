@@ -14,8 +14,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const image = crop.image;
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-    success_url: `${req.protocol}://localhost:5173/crops/?crop=${req.params.id}&user=${req.user.id}&price=${crop.price}`,
-    cancel_url: `${req.protocol}://localhost:5173/crops/${crop.id}`,
+    success_url: `https://cropify-swart.vercel.app/crops/?crop=${req.params.id}&user=${req.user.id}&price=${crop.price}`,
+    cancel_url: `https://cropify-swart.vercel.app/crops/${crop.id}`,
     customer_email: req.user.email,
     client_reference_id: req.params.id,
     line_items: [
@@ -70,7 +70,7 @@ exports.createBookingCheckout = catchAsync(async (req, res) => {
 
     await booking.populate("crop");
 
-    const url = `${req.protocol}://localhost:5173/profile`;
+    const url = `https://cropify-swart.vercel.app/profile`;
 
     const email = new Email(req.user, url);
     await email.sendBookingReceipt(booking);
@@ -299,13 +299,13 @@ exports.createCheckoutSessionForCart = catchAsync(async (req, res) => {
     // Create the checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      success_url: `${req.protocol}://localhost:5173/cart/?${cart.items
+      success_url: `https://cropify-swart.vercel.app/cart/?${cart.items
         .map(
           (item) =>
             `crop=${item.crop.id}&user=${req.user.id}&price=${item.crop.price}`
         )
         .join("&")}`,
-      cancel_url: `${req.protocol}://localhost:5173/crops/`,
+      cancel_url: `https://cropify-swart.vercel.app/crops/`,
       customer_email: req.user.email,
       line_items: lineItems,
       mode: "payment",

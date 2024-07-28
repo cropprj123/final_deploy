@@ -21,7 +21,7 @@ function UpdatePassword() {
     try {
       setLoading(true);
       const response = await axios.patch(
-        "http://localhost:5173/api/v1/users/updateMyPassword",
+        "https://cropify-swart.vercel.app/api/v1/users/updateMyPassword",
         formData
       );
       setSuccess(true);

@@ -25,7 +25,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://cropify-deploy.onrender.com",
+        target: "https://final-deploy-d3zh.onrender.com",
         changeOrigin: true,
         secure: true,
       },

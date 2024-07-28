@@ -44,7 +44,10 @@ const CreateStore = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://127.0.0.1:3000/api/v1/store", formData);
+      await axios.post(
+        "https://final-deploy-d3zh.onrender.com/api/v1/store",
+        formData
+      );
       alert("Store created successfully!");
       setFormOpen(false);
       // Optionally, reset the form after successful submission
@@ -286,7 +289,6 @@ export default CreateStore;
 
 //     try {
 //       // const response = await axios.post(
-//       //   "http://127.0.0.1:3000/api/v1/store",
 //       //   data
 //       // );
 //       // console.log(response);

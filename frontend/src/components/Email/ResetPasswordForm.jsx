@@ -22,7 +22,7 @@ function ResetPasswordForm() {
     try {
       setLoading(true);
       const response = await axios.patch(
-        `http://localhost:5173/api/v1/users/resetPassword/${params.resetToken}`,
+        `https://cropify-swart.vercel.app/api/v1/users/resetPassword/${params.resetToken}`,
         { password, passwordConfirm } // Corrected: Remove passwordConfirm from the request body
       );
       setMessage("Password Reset Successfully");

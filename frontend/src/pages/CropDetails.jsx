@@ -98,7 +98,7 @@ const CropDetails = ({ cart, setCart }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5173/api/v1/users/user"
+          "https://cropify-swart.vercel.app/api/v1/users/user"
         );
         setUserData(response.data.user);
       } catch (error) {
