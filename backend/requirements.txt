@@ -1,0 +1,9 @@
+matplotlib
+flask
+flask-cors
+plotly
+pandas
+scikit-learn
+joblib
+numpy
+requests
