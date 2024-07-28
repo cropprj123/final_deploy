@@ -18,7 +18,7 @@ const Feedback = () => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get("/api/v1/reviews/randomreviews");
-        console.log("Review Response", response.data.data.data);
+        console.log("Review Response", response);
         setReviews(response.data.data.data);
         setCrop(response.data.data.data.crop.name);
       } catch (error) {
