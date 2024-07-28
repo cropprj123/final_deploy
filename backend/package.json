@@ -4,8 +4,9 @@
   "description": "new project->4/3/2024",
   "main": "index.js",
   "scripts": {
+    "prestart": "pip install -r requirements.txt && npm rebuild sharp",
     "start": "concurrently \"nodemon server.js\" \"python fly.py\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm install && npm run prestart"
   },
   "keywords": [
     "new"
