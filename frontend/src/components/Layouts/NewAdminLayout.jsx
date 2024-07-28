@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useUserData from "../userData";
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material"; // Corrected import from @material-ui/core to @mui/material
 
 const NewAdminLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -22,7 +22,9 @@ const NewAdminLayout = () => {
       >
         <div className="mb-2 p-4">
           <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
-            {!isSmallScreen && "Admin Panel"}
+            {!isSmallScreen && userData?.user?.role === "user"
+              ? "User Panel"
+              : "Admin Panel"}
           </h5>
         </div>
         <nav className="flex flex-col gap-1  p-2 font-sans text-base font-normal text-gray-700">

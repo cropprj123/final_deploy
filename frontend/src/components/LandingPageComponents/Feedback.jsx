@@ -17,14 +17,12 @@ const Feedback = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:3000/api/v1/reviews/randomreviews"
-        );
+        const response = await axios.get("/api/v1/reviews/randomreviews");
         console.log("Review Response", response.data.data.data);
         setReviews(response.data.data.data);
         setCrop(response.data.data.data.crop.name);
       } catch (error) {
-        //console.log("Fetching Reviews", error);
+        console.log("Fetching Reviews", error);
         setError(error);
       }
     };

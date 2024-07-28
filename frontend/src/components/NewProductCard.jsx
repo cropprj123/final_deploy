@@ -47,19 +47,12 @@ export default function NewProductCard(props) {
           ₹ {props.price}
         </Typography>
         <Typography level="body-sm">
-          {props.quantity === 0 ? (
-            <span style={{ color: "red" }}>Sold Out</span>
-          ) : (
-            <>
-              {" "}
-              (Only <b>{props.quantity}</b> left in stock!)
-            </>
-          )}
+          (Only <b>{props.quantity}</b> left in stock!)
         </Typography>
       </CardContent>
       <CardOverflow>
         <Button variant="solid" color="success" size="lg">
-          {props.quantity === 0 ? "Sold Out" : "Shop now"}
+          Shop now
         </Button>
       </CardOverflow>
     </Card>

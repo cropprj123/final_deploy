@@ -1,47 +1,15 @@
-import { useState } from "react";
-import axios from "axios";
+import emailsImg from "../../assets/contact.svg";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
-import emailsImg from "../../assets/contact.svg";
 import Maps from "../../assets/HugeGlobal.svg";
 import getScrollAnimation from "../../utils/getScrollAnimation";
 import ScrollAnimationWrapper from "../ScrollAnimationWrapper";
-import SnackBar from "../SnackBar";
-
 const NewCta = () => {
-  const [loading, setLoading] = useState(false);
-  const [loginError, setLoginError] = useState(false);
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await axios.post("/api/v1/email/subscribe", formData);
-      setLoading(false);
-      setShowSuccessAlert(true);
-      setTimeout(() => setShowSuccessAlert(false), 2000);
-      setFormData({
-        name: "",
-        email: "",
-      });
-    } catch (error) {
-      setLoading(false);
-      setLoginError(true);
-      setTimeout(() => setLoginError(false), 2000);
-      console.log(error);
-    }
-  };
-
   const scrollAnimation = useMemo(() => getScrollAnimation(), []);
 
   return (
     <>
-      <div className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto flex flex-col w-full text-center justify-center">
+      <div className="max-w-screen-xl  px-6 sm:px-8 lg:px-16 mx-auto flex flex-col w-full text-center justify-center">
         <div className="flex flex-col w-full my-8">
           <ScrollAnimationWrapper>
             <motion.h3
@@ -51,7 +19,7 @@ const NewCta = () => {
               Huge Global Network of Offline Stores{" "}
             </motion.h3>
             <motion.p
-              className="leading-normal mx-auto my-2 w-10/12 sm:w-7/12 lg:w-6/12"
+              className="leading-normal  mx-auto my-2 w-10/12 sm:w-7/12 lg:w-6/12"
               variants={scrollAnimation}
             >
               See Cropify everywhere to make it easier for you when you move
@@ -63,7 +31,7 @@ const NewCta = () => {
               className="py-12 w-full px-8 mt-16"
               variants={scrollAnimation}
             >
-              <img src={Maps} className="w-full h-auto" alt="Map" />
+              <img src={Maps} className="w-full h-auto" />
             </motion.div>
           </ScrollAnimationWrapper>
         </div>
@@ -89,16 +57,11 @@ const NewCta = () => {
               <h2 className="mt-4 text-lg text-gray-600">
                 Please subscribe to stay in constant touch via emails.
               </h2>
-              <form className="mt-6 flex flex-wrap" onSubmit={handleSubmit}>
+              <form className="mt-6 flex flex-wrap">
                 <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-4">
                   <input
                     className="block w-full py-3 px-4 bg-gray-100 rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#228B22]"
                     type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
                     placeholder="Enter your email here"
                   />
                 </div>
@@ -106,11 +69,6 @@ const NewCta = () => {
                   <input
                     className="block w-full py-3 px-4 bg-gray-100 rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#228B22]"
                     type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
                     placeholder="Enter your name here"
                   />
                 </div>
@@ -121,20 +79,6 @@ const NewCta = () => {
                   Subscribe Today!
                 </button>
               </form>
-              {showSuccessAlert && (
-                <SnackBar
-                  isOpen={true}
-                  message="Thankyou for subscribing!😁"
-                  type="success"
-                />
-              )}
-              {loginError && (
-                <SnackBar
-                  isOpen={true}
-                  message="Please try again later."
-                  type="error"
-                />
-              )}
             </div>
           </motion.div>
         </ScrollAnimationWrapper>

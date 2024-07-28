@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import ApiLoading from "../ApiLoading";
-import SnackBar from "../SnackBar";
 
 function ResetPasswordForm() {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(false);
-
   const navigate = useNavigate();
   const params = useParams();
 
@@ -30,23 +26,59 @@ function ResetPasswordForm() {
         { password, passwordConfirm } // Corrected: Remove passwordConfirm from the request body
       );
       setMessage("Password Reset Successfully");
-      setSuccessMessage(true);
-      setTimeout(() => setSuccessMessage(false), 2000);
-
-      setTimeout(() => {
-        navigate("/login"); // Redirect to homepage
-        // Reload the page
-      }, 2000);
+      navigate("/login");
     } catch (error) {
       setMessage("Error resetting password");
-      setErrorMessage(true);
-      setTimeout(() => setErrorMessage(false), 2000);
     } finally {
       setLoading(false);
     }
   };
 
   return (
+    /*   <div className=" items-center w-full max-w-xs">
+      <form
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        onSubmit={handleFormSubmit}
+      >
+        <div className="mb-6">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="passwordConfirm"
+          >
+            Confirm Password:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            id="passwordConfirm"
+            value={passwordConfirm}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
+          />
+        </div>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Reset Password
+        </button>
+      </form>
+      {message && <p>{message}</p>}
+    </div> */
     <>
       {loading ? (
         <ApiLoading />
@@ -101,20 +133,9 @@ function ResetPasswordForm() {
               </div>
             </form>
             {message && <p>{message}</p>}
-            {errorMessage && (
-              <SnackBar
-                isOpen={true}
-                message="Password reset failed. Try again later."
-                type="error"
-              />
-            )}
-            {successMessage && (
-              <SnackBar isOpen={true} message={message} type="success" />
-            )}
           </div>
         </div>
       )}
-      <div className="h-screen"></div>
     </>
   );
 }
