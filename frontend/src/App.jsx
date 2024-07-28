@@ -71,8 +71,7 @@ function App() {
           />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/ourstores" element={<AdminUsers />} />
-          {/* <Route path="/try" element={<BuySuccess />} /> */}
-          <Route path="/orderplaced" element={<BuySuccess />} />
+          <Route path="/try" element={<BuySuccess />} />
 
           <Route
             path="/cart"
