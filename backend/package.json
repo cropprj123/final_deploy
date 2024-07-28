@@ -1,12 +1,14 @@
 {
   "name": "crop",
   "version": "1.0.0",
-  "description": "new project->4/3/2024",
+  "description": "New project started on 4/3/2024",
   "main": "index.js",
   "scripts": {
-    "prestart": "pip install -r requirements.txt && npm rebuild sharp",
-    "start": "concurrently \"nodemon server.js\" \"python fly.py\"",
-    "build": "npm install && npm run prestart"
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "back": "concurrently \"npm run dev:backend\" \"npm run dev:flask\"",
+    "dev:backend": "nodemon server.js",
+    "dev:flask": "python fly.py"
   },
   "keywords": [
     "new"
@@ -48,6 +50,6 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.0.0"
   }
 }
